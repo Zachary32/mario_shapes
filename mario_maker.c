@@ -30,7 +30,7 @@ int up_stairs (int up_s)
 
 int full_pyrimid (int pyrimid)
 {
-    for(int i = 0; i <= pyrimid; i++) 
+    for(int i = 0; i < pyrimid; i++) 
     {    
         for(int s = 0; s < pyrimid - i; s++){
             printf("  ");     
@@ -44,6 +44,18 @@ int full_pyrimid (int pyrimid)
     };
 };  
 
+int big_pipe() {
+    int pipe;
+    printf("Enter an integer for the height of a pipe you would like to make");
+    scanf("%d", &pipe);
+    while( pipe < 6){
+        printf("======\n======\n");
+        for(int i = 0; i < pipe; i++){
+            printf("  ==  \n");    
+        }
+        break;
+    }
+};
 
 int main(void)
 {
@@ -61,6 +73,9 @@ int main(void)
     printf("Enter an integer for the height of a pyrimid you would like to make");
     scanf("%d", &pyrimid);
     full_pyrimid(pyrimid);
+
+    big_pipe();
+
 
 
 
