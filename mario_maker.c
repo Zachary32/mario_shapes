@@ -46,14 +46,21 @@ int full_pyrimid (int pyrimid)
 
 int big_pipe() {
     int pipe;
-    printf("Enter an integer for the height of a pipe you would like to make");
-    scanf("%d", &pipe);
-    while( pipe < 6){
-        printf("======\n======\n");
-        for(int i = 0; i < pipe; i++){
-            printf("  ==  \n");    
-        }
-        break;
+    char ch;
+    do {
+        printf("Enter an integer for the height of a pipe you would like to make");
+        scanf("%d", &pipe);
+        if (pipe !=1 || pipe < 1 || pipe > 6){
+            printf("type num between 1 - 6");
+            while ((ch = getchar()) !='\n'); // so this makes sure the char is not equal to a new line and now ignores letters as well as numbers outside of the range
+            printf("try again with numbers");
+            continue;
+        };
+    } while(pipe < 1 || pipe > 6);
+
+    printf("======\n======\n");
+    for(int i = 0; i < pipe; i++){
+        printf("  ==  \n");    
     }
 };
 
@@ -75,10 +82,6 @@ int main(void)
     full_pyrimid(pyrimid);
 
     big_pipe();
-
-
-
-
     return 0;
 };
 
