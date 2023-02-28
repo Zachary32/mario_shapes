@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h> // for the toupper function
 
 
 int down_stairs (int down_s)
@@ -47,6 +48,22 @@ int full_pyrimid (int pyrimid)
 int big_pipe() {
     int pipe;
     char ch;
+    char ans;
+    do{
+        printf("If you would like to add a pipe please type Y or N");
+        scanf("%c", &ans);
+        if (toupper(ans) == 'Y'){
+            printf("This should now take you to the next part of the loop");
+        }
+        else if (toupper(ans) == 'N'){
+            printf("you have selected no");
+            return 0; // to exit early as this is not wanted
+        }
+        else{
+            printf("please try again and enter with Y or N");
+        }
+    } while(toupper(ans) != 'Y');
+
     do {
         printf("Enter an integer for the height of a pipe you would like to make");
         scanf("%d", &pipe);
