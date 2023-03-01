@@ -49,8 +49,9 @@ int big_pipe() {
     int pipe;
     char ch;
     char ans;
+    int floor;
     do{
-        printf("If you would like to add a pipe please type Y or N");
+        printf("If you would like to add a pipe please type Y or N"); // checking if would like to add the pipe  with error checking loop
         scanf("%c", &ans);
         if (toupper(ans) == 'Y'){
             printf("This should now take you to the next part of the loop");
@@ -68,17 +69,34 @@ int big_pipe() {
         printf("Enter an integer for the height of a pipe you would like to make");
         scanf("%d", &pipe);
         if (pipe !=1 || pipe < 1 || pipe > 6){
-            printf("type num between 1 - 6");
+            printf("type num between 1 - 6\n");
             while ((ch = getchar()) !='\n'); // so this makes sure the char is not equal to a new line and now ignores letters as well as numbers outside of the range
-            printf("try again with numbers");
             continue;
         };
     } while(pipe < 1 || pipe > 6);
 
+    do {
+        printf("enter int of how mant tiles of flooring you would like after the pipe");
+        scanf("%d", &floor);
+    }while(floor < 1);
+
     printf("======\n======\n");
     for(int i = 0; i < pipe; i++){
-        printf("  ==  \n");    
+        if( i == pipe - 1 ){
+            printf("  ==");
+        }
+        else{
+            printf("  ==  \n");    
+        }
     }
+    
+    int z = 0;
+    while(z < floor)
+    {
+        printf("_");
+        z++;
+    }
+    
 };
 
 int main(void)
