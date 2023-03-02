@@ -51,25 +51,27 @@ int big_pipe() {
     char ans;
     int floor;
     do{
-        printf("If you would like to add a pipe please type Y or N"); // checking if would like to add the pipe  with error checking loop
+        printf("If you would like to add a pipe please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
+        getchar();  // consume the newline character from the input buffer
         scanf("%c", &ans);
         if (toupper(ans) == 'Y'){
-            printf("This should now take you to the next part of the loop");
+            printf("This should now take you to the next part of the loop\n");
         }
         else if (toupper(ans) == 'N'){
-            printf("you have selected no");
+            printf("you have selected no\n");
             return 0; // to exit early as this is not wanted
         }
-        else{
-            printf("please try again and enter with Y or N");
+        else {
+            while ((ch = getchar()) != '\n' && ch != EOF); // also stops if multiple letters does not repeat printf for each letter.
         }
     } while(toupper(ans) != 'Y');
+
+// still need to fix this
 
     do {
         printf("Enter an integer for the height of a pipe you would like to make");
         scanf("%d", &pipe);
         if (pipe !=1 || pipe < 1 || pipe > 6){
-            printf("type num between 1 - 6\n");
             while ((ch = getchar()) !='\n'); // so this makes sure the char is not equal to a new line and now ignores letters as well as numbers outside of the range
             continue;
         };
