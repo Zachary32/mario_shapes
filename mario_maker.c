@@ -62,14 +62,13 @@ int big_pipe() {
             return 0; // to exit early as this is not wanted
         }
         else {
-            while ((ch = getchar()) != '\n' && ch != EOF); // also stops if multiple letters does not repeat printf for each letter.
+            printf("Invalid input. Please enter Y or N.\n");
+            getchar();
         }
     } while(toupper(ans) != 'Y');
 
-// still need to fix this
-
     do {
-        printf("Enter an integer for the height of a pipe you would like to make");
+        printf("Enter an integer for the height of a pipe you would like to make between 1-6 \n");
         scanf("%d", &pipe);
         if (pipe !=1 || pipe < 1 || pipe > 6){
             while ((ch = getchar()) !='\n'); // so this makes sure the char is not equal to a new line and now ignores letters as well as numbers outside of the range
@@ -78,10 +77,13 @@ int big_pipe() {
     } while(pipe < 1 || pipe > 6);
 
     do {
-        printf("enter int of how mant tiles of flooring you would like after the pipe");
+        printf("enter int of how many tiles of flooring you would like after the pipe, the number must be between 1-10 \n");
         scanf("%d", &floor);
-    }while(floor < 1);
-
+        if (floor !=1 || floor <1 || floor > 10){
+            while ((ch =getchar() != '\n'));
+            continue;
+        };
+    }while(floor < 1 || floor > 10);
     printf("======\n======\n");
     for(int i = 0; i < pipe; i++){
         if( i == pipe - 1 ){
@@ -91,18 +93,18 @@ int big_pipe() {
             printf("  ==  \n");    
         }
     }
-    
-    int z = 0;
-    while(z < floor)
+    int i = 0;
+    printf("=="); // this adds to the bottom line so before any floowing is added it matches to the top of the pipe so it doesnt look too miss matched.
+    while(i < floor)
     {
-        printf("_");
-        z++;
+        printf("=");
+        i++;
     }
-    
 };
 
 int main(void)
 {
+    
     int down_s;
     printf("Enter an integer for the amount of stairs to go down: ");
     scanf("%d", &down_s);
@@ -117,6 +119,7 @@ int main(void)
     printf("Enter an integer for the height of a pyrimid you would like to make");
     scanf("%d", &pyrimid);
     full_pyrimid(pyrimid);
+    
 
     big_pipe();
     return 0;
