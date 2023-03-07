@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h> // for the toupper function
+#include <windows.h> // for the sleep funtion  for linux would need this #include<unistd.h>
 
 
 int down_stairs (int down_s)
@@ -29,8 +30,34 @@ int up_stairs (int up_s)
     };
 };  
 
-int full_pyrimid (int pyrimid)
+int full_pyrimid ()
 {
+    int pyrimid;
+    char ch;
+    char ans;
+    do{
+        printf("If you would like to add a pyrimid please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
+        getchar();  // consume the newline character from the input buffer
+        scanf("%c", &ans);
+        if (toupper(ans) == 'Y'){
+            printf("This should now take you to the next part of the loop\n");
+        }
+        else if (toupper(ans) == 'N'){
+            printf("you have selected no\n");
+            return 0; // to exit early as this is not wanted
+        }
+        else {
+            printf("Invalid input. Please enter Y or N.\n");
+            getchar();
+        }
+    } while(toupper(ans) != 'Y');
+
+    do{
+        printf("Enter an integer for the height of a pyrimid you would like to make\n");
+        getchar();
+        scanf("%d", &pyrimid);
+    }while(pyrimid < 1);
+
     for(int i = 0; i < pyrimid; i++) 
     {    
         for(int s = 0; s < pyrimid - i; s++){
@@ -44,6 +71,8 @@ int full_pyrimid (int pyrimid)
         printf("__\n");
     };
 };  
+
+// still need to add the amount of height possible to make the pyrimid 
 
 int big_pipe() {
     int pipe;
@@ -86,6 +115,7 @@ int big_pipe() {
     }while(floor < 1 || floor > 10);
     printf("======\n======\n");
     for(int i = 0; i < pipe; i++){
+        Sleep(1 * 1000);
         if( i == pipe - 1 ){
             printf("  ==");
         }
@@ -94,14 +124,30 @@ int big_pipe() {
         }
     }
     int i = 0;
-    printf("=="); // this adds to the bottom line so before any floowing is added it matches to the top of the pipe so it doesnt look too miss matched.
+    printf("=="); // this adds to the bottom line so before any folloowing is added it matches to the top of the pipe so it doesnt look too miss matched.
     while(i < floor)
     {
+        Sleep(1 * 1000);// 1 second is equal to 1000 milliseconds and Sleep is calculated in milliseconds.
         printf("=");
         i++;
     }
 };
 
+
+int flag(){
+    printf("   =\n");
+    printf("   =====\n");
+    printf("   ========\n");
+    printf("   =====\n");
+    printf("   =\n");
+    printf("   =\n");
+    printf("   =\n");
+    printf("   =\n");
+    printf("   =\n");
+    printf("=======\n");
+    printf("=======\n");
+    printf(" =====\n");
+};
 int main(void)
 {
     
@@ -115,13 +161,11 @@ int main(void)
     scanf("%d", &up_s);
     up_stairs(up_s);
 
-    int pyrimid;
-    printf("Enter an integer for the height of a pyrimid you would like to make");
-    scanf("%d", &pyrimid);
-    full_pyrimid(pyrimid);
+    full_pyrimid();
     
 
     big_pipe();
+    flag();
     return 0;
 };
 
