@@ -17,8 +17,37 @@ int down_stairs (int down_s)
     printf("__");
 };
 
-int up_stairs (int up_s)
+int up_stairs ()
 {
+    int up_s;
+    char ch;
+    char ans;
+    do{
+        printf("If you would like to add a stairs please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
+        getchar();  // consume the newline character from the input buffer
+        scanf("%c", &ans);
+        if (toupper(ans) == 'Y'){
+            printf("This should now take you to the next part of the loop\n");
+        }
+        else if (toupper(ans) == 'N'){
+            printf("you have selected no\n");
+            return 0; // to exit early as this is not wanted
+        }
+        else {
+            printf("Invalid input. Please enter Y or N.\n");
+            getchar();
+        }
+    } while(toupper(ans) != 'Y');
+    
+    do{
+        printf("Enter an integer for the height of the stairs you would like to make between 2 - 10\n");
+        scanf("%d", &up_s);
+        if (up_s !=1 || up_s <2 || up_s > 10){
+            while ((ch =getchar() != '\n'));
+            continue;
+        };
+    }while(up_s < 2 || up_s > 10);
+
     for(int i = 0; i < up_s; i++) 
     {   
         for(int s = 0; s < up_s - i; s++){
@@ -54,8 +83,11 @@ int full_pyrimid ()
 
     do{
         printf("Enter an integer for the height of a pyrimid you would like to make between 3 - 10\n");
-        getchar();
         scanf("%d", &pyrimid);
+        if (pyrimid !=1 || pyrimid <3 || pyrimid > 10){
+            while ((ch =getchar() != '\n'));
+            continue;
+        };
     }while(pyrimid < 3 || pyrimid > 10);
 
     for(int i = 0; i < pyrimid; i++) 
@@ -154,10 +186,7 @@ int main(void)
     scanf("%d", &down_s);
     down_stairs(down_s);
 
-    int up_s;
-    printf("Enter an integer for the amount of stairs to go up");
-    scanf("%d", &up_s);
-    up_stairs(up_s);
+    up_stairs();
 
     full_pyrimid();
     
