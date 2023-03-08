@@ -53,10 +53,10 @@ int full_pyrimid ()
     } while(toupper(ans) != 'Y');
 
     do{
-        printf("Enter an integer for the height of a pyrimid you would like to make\n");
+        printf("Enter an integer for the height of a pyrimid you would like to make between 3 - 10\n");
         getchar();
         scanf("%d", &pyrimid);
-    }while(pyrimid < 1);
+    }while(pyrimid < 3 || pyrimid > 10);
 
     for(int i = 0; i < pyrimid; i++) 
     {    
@@ -71,8 +71,6 @@ int full_pyrimid ()
         printf("__\n");
     };
 };  
-
-// still need to add the amount of height possible to make the pyrimid 
 
 int big_pipe() {
     int pipe;
