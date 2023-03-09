@@ -4,8 +4,38 @@
 #include <windows.h> // for the sleep funtion  for linux would need this #include<unistd.h>
 
 
-int down_stairs (int down_s)
+int down_stairs()
 {
+    int down_s;
+    char ch; 
+    char ans;
+    do{
+        printf("If you would like to add stairs that go downwards please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
+        scanf("%c", &ans);
+        getchar();  // consume the newline character from the input buffer
+        if (toupper(ans) == 'Y'){
+            printf("This should now take you to the next part of the loop\n");
+        }
+        else if (toupper(ans) == 'N'){
+            printf("you have selected no\n");
+            return 0; // to exit early as this is not wanted
+        }
+        else {
+            printf("Invalid input. Please enter Y or N.\n");
+            getchar();
+        }
+    } while(toupper(ans) != 'Y');
+
+    do{
+        printf("Enter an integer for the height of the stairs going down you would like to make between 2 - 10\n");
+        scanf("%d", &down_s);
+        if (down_s !=1 || down_s <2 || down_s > 10){
+            while ((ch =getchar() != '\n'));
+            continue;
+        };
+    }while(down_s < 2 || down_s > 10);
+
+    
     for(int i = 0; i < down_s; i++) 
     {   
         printf("__\n");
@@ -24,8 +54,8 @@ int up_stairs ()
     char ans;
     do{
         printf("If you would like to add a stairs please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
-        getchar();  // consume the newline character from the input buffer
         scanf("%c", &ans);
+        getchar();  // consume the newline character from the input buffer
         if (toupper(ans) == 'Y'){
             printf("This should now take you to the next part of the loop\n");
         }
@@ -66,8 +96,8 @@ int full_pyrimid ()
     char ans;
     do{
         printf("If you would like to add a pyrimid please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
-        getchar();  // consume the newline character from the input buffer
         scanf("%c", &ans);
+        getchar();  // consume the newline character from the input buffer
         if (toupper(ans) == 'Y'){
             printf("This should now take you to the next part of the loop\n");
         }
@@ -111,8 +141,8 @@ int big_pipe() {
     int floor;
     do{
         printf("If you would like to add a pipe please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
-        getchar();  // consume the newline character from the input buffer
         scanf("%c", &ans);
+        getchar();  // consume the newline character from the input buffer
         if (toupper(ans) == 'Y'){
             printf("This should now take you to the next part of the loop\n");
         }
@@ -181,10 +211,7 @@ int flag(){
 int main(void)
 {
     
-    int down_s;
-    printf("Enter an integer for the amount of stairs to go down: ");
-    scanf("%d", &down_s);
-    down_stairs(down_s);
+    down_stairs();
 
     up_stairs();
 
@@ -196,3 +223,4 @@ int main(void)
     return 0;
 };
 
+// still need to add floor for the other functions.
