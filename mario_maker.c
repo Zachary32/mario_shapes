@@ -94,6 +94,7 @@ int full_pyrimid ()
     int pyrimid;
     char ch;
     char ans;
+    int py_floor;
     do{
         printf("If you would like to add a pyrimid please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
         scanf("%c", &ans);
@@ -120,6 +121,18 @@ int full_pyrimid ()
         };
     }while(pyrimid < 3 || pyrimid > 10);
 
+    int newline = pyrimid -1; // initilaised lew line var to help with the flooring at the end of the loop.
+    
+    do{
+        printf("please enter int bettween 1-10 of how much flooring you would like \n");
+        scanf("%d", &py_floor);
+        if (py_floor !=1 || py_floor <1 || py_floor > 10){
+            while ((ch =getchar() != '\n'));
+            continue;
+        };
+    }while(py_floor < 1 || py_floor> 10);
+
+    
     for(int i = 0; i < pyrimid; i++) 
     {    
         for(int s = 0; s < pyrimid - i; s++){
@@ -130,7 +143,13 @@ int full_pyrimid ()
             printf(" ");
             printf("|");
         };
-        printf("__\n");
+        printf("__");
+        if (i == newline) {
+            for(int k = 0; k < py_floor;k++){
+            printf("=");
+            };
+        }
+        printf("\n");
     };
 };  
 
@@ -210,6 +229,7 @@ int flag(){
 };
 int main(void)
 {
+
     
     down_stairs();
 
@@ -219,7 +239,9 @@ int main(void)
     
 
     big_pipe();
+
     flag();
+
     return 0;
 };
 
