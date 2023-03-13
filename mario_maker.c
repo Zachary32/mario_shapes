@@ -52,6 +52,7 @@ int up_stairs ()
     int up_s;
     char ch;
     char ans;
+    int up_s_floor;
     do{
         printf("If you would like to add a stairs please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
         scanf("%c", &ans);
@@ -68,6 +69,7 @@ int up_stairs ()
             getchar();
         }
     } while(toupper(ans) != 'Y');
+
     
     do{
         printf("Enter an integer for the height of the stairs you would like to make between 2 - 10\n");
@@ -78,17 +80,34 @@ int up_stairs ()
         };
     }while(up_s < 2 || up_s > 10);
 
+    int newline = up_s -1; // initilaised lew line var to help with the flooring at the end of the loop.
+
+    do{
+        printf("please enter int bettween 1-10 of how much flooring you would like \n");
+        scanf("%d", &up_s_floor);
+        if (up_s_floor !=1 || up_s_floor <1 || up_s_floor > 10){
+            while ((ch =getchar() != '\n'));
+            continue;
+    };
+    }while(up_s_floor < 1 || up_s_floor> 10);
+
     for(int i = 0; i < up_s; i++) 
     {   
         for(int s = 0; s < up_s - i; s++){
-            printf("  ");       
+            printf("  ");   
+            if (i == 0 && s == up_s-1) {
+                for(int k = 0; k < up_s_floor;k++){
+                printf("_");
+                };
+            }   
         };
-        printf("__");
-        printf("|");
-        printf("\n");
+            printf("__");
+            printf("|");
+            printf("\n");
+            Sleep(1000);
     };
 };  
-
+// still need to fix the flooring on the first step
 int full_pyrimid ()
 {
     int pyrimid;
@@ -146,7 +165,7 @@ int full_pyrimid ()
         printf("__");
         if (i == newline) {
             for(int k = 0; k < py_floor;k++){
-            printf("=");
+            printf("_");
             };
         }
         printf("\n");
