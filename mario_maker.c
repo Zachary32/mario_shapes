@@ -9,6 +9,7 @@ int down_stairs()
     int down_s;
     char ch; 
     char ans;
+    int down_s_floor;
     do{
         printf("If you would like to add stairs that go downwards please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
         scanf("%c", &ans);
@@ -35,6 +36,16 @@ int down_stairs()
         };
     }while(down_s < 2 || down_s > 10);
 
+    int newline = down_s - 1; // initilaised new line var to help with the flooring at the end of the loop.
+    do{
+    printf("please enter int bettween 1-10 of how much flooring you would like \n");
+    scanf("%d", &down_s_floor);
+    if (down_s_floor !=1 || down_s_floor <1 || down_s_floor > 10){
+        while ((ch =getchar() != '\n'));
+        continue;
+    };
+    }while(down_s_floor < 1 || down_s_floor> 10);
+
     
     for(int i = 0; i < down_s; i++) 
     {   
@@ -43,7 +54,14 @@ int down_stairs()
             printf(" ");
             printf("|");
         };
+
+        if (i == newline) {
+        for(int k = 0; k < down_s_floor;k++){
+        printf("_");
+        };
+        }
     };
+
     printf("__");
 };
 
@@ -91,20 +109,22 @@ int up_stairs ()
     };
     }while(up_s_floor < 1 || up_s_floor> 10);
 
-    for(int i = 0; i < up_s; i++) 
+    for(int i = -1; i < up_s; i++)  //-1 to add an extra iteration due to add an extra loop to make one taller as the floor to make the count right as up_s_floor would take one otherwise
     {   
         for(int s = 0; s < up_s - i; s++){
             printf("  ");   
-            if (i == 0 && s == up_s-1) {
+        };  
+        printf("__");
+        if(i != -1){ // if not equal to first iteration then print "|" to create the stairs down 
+            printf("|");
+        }
+        if (i == -1) { // checking if set to first line / iteration then print the floor
                 for(int k = 0; k < up_s_floor;k++){
                 printf("_");
                 };
-            }   
-        };
-            printf("__");
-            printf("|");
-            printf("\n");
-            Sleep(1000);
+        }  
+        printf("\n");
+        Sleep(1000);
     };
 };  
 // still need to fix the flooring on the first step
@@ -140,7 +160,7 @@ int full_pyrimid ()
         };
     }while(pyrimid < 3 || pyrimid > 10);
 
-    int newline = pyrimid -1; // initilaised lew line var to help with the flooring at the end of the loop.
+    int newline = pyrimid -1; // initilaised new line var to help with the flooring at the end of the loop.
     
     do{
         printf("please enter int bettween 1-10 of how much flooring you would like \n");
