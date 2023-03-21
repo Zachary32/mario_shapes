@@ -14,6 +14,10 @@ int stairs(){
     int up_s_floor;
     int pyrimid;
     int py_floor;
+    int pipe;
+    //char ch;
+    //char ans;
+    int floor;
 
     //down stairs
     do{
@@ -25,7 +29,7 @@ int stairs(){
         }
         else if (toupper(ans) == 'N'){
             printf("you have selected no\n");
-            return 0; // to exit early as this is not wanted
+           return 0;
         }
         else {
             printf("Invalid input. Please enter Y or N.\n");
@@ -91,52 +95,44 @@ int stairs(){
         };
     }while(py_floor < 1 || py_floor> 10);
     // end of pyrimid questions
-    //output of down stair
-
-    
-    for(int i = 0; i < down_s; i++) 
-    {   
-        printf("__\n");
-        for(int j = 0; j <= i; j++){
-            printf(" ");
-            printf("|");
-        };
-
-        if (i == newline) {
-        for(int k = 0; k < down_s_floor;k++){
-        printf("_");
-        };
+    // pipe questions 
+    do{
+        printf("If you would like to add a pipe please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
+        scanf("%c", &ans);
+        getchar();  // consume the newline character from the input buffer
+        if (toupper(ans) == 'Y'){
+            printf("This should now take you to the next part of the loop\n");
         }
-    };
-
-    printf("__");
-    //end of output for  down stairs
-
-    //pyrimid output
-    for(int i = 0; i < pyrimid; i++) 
-    {    
-        for(int s = 0; s < pyrimid - i; s++){
-            printf("  ");     
-        };
-        for(int j = 0; j < i ; j++){
-            printf("__");
-            printf(" ");
-            printf("|");
-        };
-        printf("__");
-        if (i == newline_py) {
-            for(int k = 0; k < py_floor;k++){
-            printf("_");
-            };
+        else if (toupper(ans) == 'N'){
+            printf("you have selected no\n");
+            return 0; // to exit early as this is not wanted
         }
-        printf("\n");
-    }
-     // end of pyrimid output
+        else {
+            printf("Invalid input. Please enter Y or N.\n");
+            getchar();
+        }
+    } while(toupper(ans) != 'Y');
 
+    do {
+        printf("Enter an integer for the height of a pipe you would like to make between 1-6 \n");
+        scanf("%d", &pipe);
+        if (pipe !=1 || pipe < 1 || pipe > 6){
+            while ((ch = getchar()) !='\n'); // so this makes sure the char is not equal to a new line and now ignores letters as well as numbers outside of the range
+            continue;
+        };
+    } while(pipe < 1 || pipe > 6);
 
+    do {
+        printf("enter int of how many tiles of flooring you would like after the pipe, the number must be between 1-10 \n");
+        scanf("%d", &floor);
+        if (floor !=1 || floor <1 || floor > 10){
+            while ((ch =getchar() != '\n'));
+            continue;
+        };
+    }while(floor < 1 || floor > 10);
+    //end of pipe questions
 
-
-    //up stairs
+    //up stairs questions
     do{
         printf("If you would like to add a stairs please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
         scanf("%c", &ans);
@@ -172,7 +168,75 @@ int stairs(){
             continue;
     };
     }while(up_s_floor < 1 || up_s_floor> 10);
+    // end of up stairs questions
 
+    //output of down stair
+
+
+    for(int i = 0; i < down_s; i++) 
+    {   
+        printf("__\n");
+        for(int j = 0; j <= i; j++){
+            printf(" ");
+            printf("|");
+        };
+
+        if (i == newline) {
+        for(int k = 0; k < down_s_floor;k++){
+        printf("_");
+        };
+        }
+    };
+    printf("__");
+    //end of output for  down stairs
+
+    printf("\n");
+
+    //pyrimid output
+    for(int i = 0; i < pyrimid; i++) 
+    {    
+        for(int s = 0; s < pyrimid - i; s++){
+            printf("  ");     
+        };
+        for(int j = 0; j < i ; j++){
+            printf("__");
+            printf(" ");
+            printf("|");
+        };
+        printf("__");
+        if (i == newline_py) {
+            for(int k = 0; k < py_floor;k++){
+            printf("_");
+            };
+        }
+        printf("\n");
+    }
+    // end of pyrimid output
+
+    printf("\n");
+
+    // pipe output
+    printf("======\n======\n");
+    for(int i = 0; i < pipe; i++){
+        Sleep(1 * 1000);
+        if( i == pipe - 1 ){
+            printf("  ==");
+        }
+        else{
+            printf("  ==  \n");    
+        }
+    }
+    int i = 0;
+    printf("=="); // this adds to the bottom line so before any folloowing is added it matches to the top of the pipe so it doesnt look too miss matched.
+    while(i < floor)
+    {
+        Sleep(1 * 1000);// 1 second is equal to 1000 milliseconds and Sleep is calculated in milliseconds.
+        printf("=");
+        i++;
+    }
+    //end of pipe output
+    printf("\n");
+    //up stairs output
     for(int i = -1; i < up_s; i++)  //-1 to add an extra iteration due to add an extra loop to make one taller as the floor to make the count right as up_s_floor would take one otherwise
     {   
         for(int s = 0; s < up_s - i; s++){
@@ -190,7 +254,21 @@ int stairs(){
         printf("\n");
         Sleep(1000);
     };
-    // end of up stairs 
+    // end of up stairs output
+    printf("\n");
+    // flag
+    printf("   =\n");
+    printf("   =====\n");
+    printf("   ========\n");
+    printf("   =====\n");
+    printf("   =\n");
+    printf("   =\n");
+    printf("   =\n");
+    printf("   =\n");
+    printf("   =\n");
+    printf("=======\n");
+    printf("=======\n");
+    printf(" =====\n");
 };  
 
 
@@ -457,21 +535,18 @@ int flag(){
 };
 int main(void)
 {
-
-    
-
    // down_stairs();
 
    // up_stairs();
 
     stairs();
 
-    full_pyrimid();
+   // full_pyrimid();
     
 
-    big_pipe();
+   // big_pipe();
 
-    flag();
+    //flag();
 
     return 0;
 };

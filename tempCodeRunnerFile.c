@@ -1,2 +1,6 @@
 
-    int pipe;
+            }
+            printf("\n");
+        }
+    }
+     // end of pyrimid output
