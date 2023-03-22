@@ -3,4 +3,4 @@
             printf("\n");
         }
     }
-     // end of pyrimid output
+     // end of pyramid output

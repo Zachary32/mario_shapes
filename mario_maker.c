@@ -1,43 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h> // for the toupper function
-#include <windows.h> // for the sleep funtion  for linux would need this #include<unistd.h>
 
-int stairs(){
+int stairs(){  // one large function that asks all the questions then prints them out after
     int down_s;
     char ch; 
-    char ans;
     int down_s_floor;
     int up_s;
-    //char ch;
-    //char ans;
     int up_s_floor;
-    int pyrimid;
+    int pyramid;
     int py_floor;
     int pipe;
-    //char ch;
-    //char ans;
     int floor;
 
     //down stairs
     do{
-        printf("If you would like to add stairs that go downwards please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
-        scanf("%c", &ans);
-        getchar();  // consume the newline character from the input buffer
-        if (toupper(ans) == 'Y'){
-            printf("This should now take you to the next part of the loop\n");
-        }
-        else if (toupper(ans) == 'N'){
-            printf("you have selected no\n");
-           return 0;
-        }
-        else {
-            printf("Invalid input. Please enter Y or N.\n");
-            getchar();
-        }
-    } while(toupper(ans) != 'Y');
-
-    do{
+        printf("For the down stairs \n");
         printf("Enter an integer for the height of the stairs going down you would like to make between 2 - 10\n");
         scanf("%d", &down_s);
         if (down_s !=1 || down_s <2 || down_s > 10){
@@ -48,7 +26,8 @@ int stairs(){
 
     int newline = down_s - 1; // initilaised new line var to help with the flooring at the end of the loop.
     do{
-    printf("please enter int bettween 1-10 of how much flooring you would like \n");
+    printf("For the down stairs \n");
+    printf("Please enter int between 1-10 of how much flooring you would like at the bottom of the stairs\n");
     scanf("%d", &down_s_floor);
     if (down_s_floor !=1 || down_s_floor <1 || down_s_floor > 10){
         while ((ch =getchar() != '\n'));
@@ -57,63 +36,33 @@ int stairs(){
     }while(down_s_floor < 1 || down_s_floor> 10);
     //end of questions for down stairs
 
-    //pyrimid
+    //pyramid
     do{
-        printf("If you would like to add a pyrimid please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
-        scanf("%c", &ans);
-        getchar();  // consume the newline character from the input buffer
-        if (toupper(ans) == 'Y'){
-            printf("This should now take you to the next part of the loop\n");
-        }
-        else if (toupper(ans) == 'N'){
-            printf("you have selected no\n");
-            return 0; // to exit early as this is not wanted
-        }
-        else {
-            printf("Invalid input. Please enter Y or N.\n");
-            getchar();
-        }
-    } while(toupper(ans) != 'Y');
-
-    do{
-        printf("Enter an integer for the height of a pyrimid you would like to make between 3 - 10\n");
-        scanf("%d", &pyrimid);
-        if (pyrimid !=1 || pyrimid <3 || pyrimid > 10){
+        printf("For the pyramid \n");
+        printf("Enter an integer for the height of a pyramid you would like to make between 3 - 10\n");
+        scanf("%d", &pyramid);
+        if (pyramid !=1 || pyramid <3 || pyramid > 10){
             while ((ch =getchar() != '\n'));
             continue;
         };
-    }while(pyrimid < 3 || pyrimid > 10);
+    }while(pyramid < 3 || pyramid > 10);
 
-    int newline_py = pyrimid -1; // initilaised new line var to help with the flooring at the end of the loop.
+    int newline_py = pyramid -1; // initilaised new line var to help with the flooring at the end of the loop.
     
     do{
-        printf("please enter int bettween 1-10 of how much flooring you would like \n");
+        printf("For the pyramid \n");
+        printf("Please enter int between 1-10 of how much flooring you would like \n");
         scanf("%d", &py_floor);
         if (py_floor !=1 || py_floor <1 || py_floor > 10){
             while ((ch =getchar() != '\n'));
             continue;
         };
     }while(py_floor < 1 || py_floor> 10);
-    // end of pyrimid questions
+    // end of pyramid questions
     // pipe questions 
-    do{
-        printf("If you would like to add a pipe please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
-        scanf("%c", &ans);
-        getchar();  // consume the newline character from the input buffer
-        if (toupper(ans) == 'Y'){
-            printf("This should now take you to the next part of the loop\n");
-        }
-        else if (toupper(ans) == 'N'){
-            printf("you have selected no\n");
-            return 0; // to exit early as this is not wanted
-        }
-        else {
-            printf("Invalid input. Please enter Y or N.\n");
-            getchar();
-        }
-    } while(toupper(ans) != 'Y');
 
     do {
+        printf("For the Pipe \n");
         printf("Enter an integer for the height of a pipe you would like to make between 1-6 \n");
         scanf("%d", &pipe);
         if (pipe !=1 || pipe < 1 || pipe > 6){
@@ -123,6 +72,7 @@ int stairs(){
     } while(pipe < 1 || pipe > 6);
 
     do {
+        printf("For the Pipe \n");
         printf("enter int of how many tiles of flooring you would like after the pipe, the number must be between 1-10 \n");
         scanf("%d", &floor);
         if (floor !=1 || floor <1 || floor > 10){
@@ -133,25 +83,9 @@ int stairs(){
     //end of pipe questions
 
     //up stairs questions
-    do{
-        printf("If you would like to add a stairs please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
-        scanf("%c", &ans);
-        getchar();  // consume the newline character from the input buffer
-        if (toupper(ans) == 'Y'){
-            printf("This should now take you to the next part of the loop\n");
-        }
-        else if (toupper(ans) == 'N'){
-            printf("you have selected no\n");
-            return 0; // to exit early as this is not wanted
-        }
-        else {
-            printf("Invalid input. Please enter Y or N.\n");
-            getchar();
-        }
-    } while(toupper(ans) != 'Y');
 
-    
     do{
+        printf("For the up stairs \n");
         printf("Enter an integer for the height of the stairs you would like to make between 2 - 10\n");
         scanf("%d", &up_s);
         if (up_s !=1 || up_s <2 || up_s > 10){
@@ -161,7 +95,8 @@ int stairs(){
     }while(up_s < 2 || up_s > 10);
 
     do{
-        printf("please enter int bettween 1-10 of how much flooring you would like \n");
+        printf("For the up stairs \n");
+        printf("Please enter int between 1-10 of how much flooring you would like \n");
         scanf("%d", &up_s_floor);
         if (up_s_floor !=1 || up_s_floor <1 || up_s_floor > 10){
             while ((ch =getchar() != '\n'));
@@ -192,10 +127,10 @@ int stairs(){
 
     printf("\n");
 
-    //pyrimid output
-    for(int i = 0; i < pyrimid; i++) 
+    //pyramid output
+    for(int i = 0; i < pyramid; i++) 
     {    
-        for(int s = 0; s < pyrimid - i; s++){
+        for(int s = 0; s < pyramid - i; s++){
             printf("  ");     
         };
         for(int j = 0; j < i ; j++){
@@ -211,14 +146,13 @@ int stairs(){
         }
         printf("\n");
     }
-    // end of pyrimid output
+    // end of pyramid output
 
     printf("\n");
 
     // pipe output
     printf("======\n======\n");
     for(int i = 0; i < pipe; i++){
-        Sleep(1 * 1000);
         if( i == pipe - 1 ){
             printf("  ==");
         }
@@ -230,7 +164,6 @@ int stairs(){
     printf("=="); // this adds to the bottom line so before any folloowing is added it matches to the top of the pipe so it doesnt look too miss matched.
     while(i < floor)
     {
-        Sleep(1 * 1000);// 1 second is equal to 1000 milliseconds and Sleep is calculated in milliseconds.
         printf("=");
         i++;
     }
@@ -252,7 +185,6 @@ int stairs(){
             };
         }  
         printf("\n");
-        Sleep(1000);
     };
     // end of up stairs output
     printf("\n");
@@ -279,7 +211,7 @@ int down_stairs()
     char ans;
     int down_s_floor;
     do{
-        printf("If you would like to add stairs that go downwards please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
+        printf("If you would like to add stairs that go downwards please type Y or N: \n"); // checking if would like to add the pipe with error checking loop
         scanf("%c", &ans);
         getchar();  // consume the newline character from the input buffer
         if (toupper(ans) == 'Y'){
@@ -306,7 +238,7 @@ int down_stairs()
 
     int newline = down_s - 1; // initilaised new line var to help with the flooring at the end of the loop.
     do{
-    printf("please enter int bettween 1-10 of how much flooring you would like \n");
+    printf("Please enter int between 1-10 of how much flooring you would like to go after the stairs \n");
     scanf("%d", &down_s_floor);
     if (down_s_floor !=1 || down_s_floor <1 || down_s_floor > 10){
         while ((ch =getchar() != '\n'));
@@ -331,6 +263,7 @@ int down_stairs()
     };
 
     printf("__");
+    printf("\n");
 };
 
 int up_stairs ()
@@ -340,7 +273,7 @@ int up_stairs ()
     char ans;
     int up_s_floor;
     do{
-        printf("If you would like to add a stairs please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
+        printf("If you would like to add a stairs the go up please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
         scanf("%c", &ans);
         getchar();  // consume the newline character from the input buffer
         if (toupper(ans) == 'Y'){
@@ -369,7 +302,7 @@ int up_stairs ()
     int newline = up_s -1; // initilaised lew line var to help with the flooring at the end of the loop.
 
     do{
-        printf("please enter int bettween 1-10 of how much flooring you would like \n");
+        printf("Please enter int between 1-10 of how much flooring you would like to go after the stairs \n");
         scanf("%d", &up_s_floor);
         if (up_s_floor !=1 || up_s_floor <1 || up_s_floor > 10){
             while ((ch =getchar() != '\n'));
@@ -392,17 +325,16 @@ int up_stairs ()
                 };
         }  
         printf("\n");
-        Sleep(1000);
     };
 };  
-int full_pyrimid ()
+int full_pyramid ()
 {
-    int pyrimid;
+    int pyramid;
     char ch;
     char ans;
     int py_floor;
     do{
-        printf("If you would like to add a pyrimid please type Y or N: \n"); // checking if would like to add the pipe  with error checking loop
+        printf("If you would like to add a pyramid please type Y or N: \n"); // checking if would like to add the pipe with error checking loop
         scanf("%c", &ans);
         getchar();  // consume the newline character from the input buffer
         if (toupper(ans) == 'Y'){
@@ -419,18 +351,18 @@ int full_pyrimid ()
     } while(toupper(ans) != 'Y');
 
     do{
-        printf("Enter an integer for the height of a pyrimid you would like to make between 3 - 10\n");
-        scanf("%d", &pyrimid);
-        if (pyrimid !=1 || pyrimid <3 || pyrimid > 10){
+        printf("Enter an integer for the height of a pyramid you would like to make between 3 - 10\n");
+        scanf("%d", &pyramid);
+        if (pyramid !=1 || pyramid <3 || pyramid > 10){
             while ((ch =getchar() != '\n'));
             continue;
         };
-    }while(pyrimid < 3 || pyrimid > 10);
+    }while(pyramid < 3 || pyramid > 10);
 
-    int newline = pyrimid -1; // initilaised new line var to help with the flooring at the end of the loop.
+    int newline = pyramid -1; // initilaised new line var to help with the flooring at the end of the loop.
     
     do{
-        printf("please enter int bettween 1-10 of how much flooring you would like \n");
+        printf("Please enter int between 1-10 of how much flooring you would like to go after the pyramid \n");
         scanf("%d", &py_floor);
         if (py_floor !=1 || py_floor <1 || py_floor > 10){
             while ((ch =getchar() != '\n'));
@@ -439,9 +371,9 @@ int full_pyrimid ()
     }while(py_floor < 1 || py_floor> 10);
 
     
-    for(int i = 0; i < pyrimid; i++) 
+    for(int i = 0; i < pyramid; i++) 
     {    
-        for(int s = 0; s < pyrimid - i; s++){
+        for(int s = 0; s < pyramid - i; s++){
             printf("  ");     
         };
         for(int j = 0; j < i ; j++){
@@ -491,7 +423,7 @@ int big_pipe() {
     } while(pipe < 1 || pipe > 6);
 
     do {
-        printf("enter int of how many tiles of flooring you would like after the pipe, the number must be between 1-10 \n");
+        printf("Enter int of how many tiles of flooring you would like after the pipe, the number must be between 1-10 \n");
         scanf("%d", &floor);
         if (floor !=1 || floor <1 || floor > 10){
             while ((ch =getchar() != '\n'));
@@ -500,7 +432,7 @@ int big_pipe() {
     }while(floor < 1 || floor > 10);
     printf("======\n======\n");
     for(int i = 0; i < pipe; i++){
-        Sleep(1 * 1000);
+
         if( i == pipe - 1 ){
             printf("  ==");
         }
@@ -512,7 +444,6 @@ int big_pipe() {
     printf("=="); // this adds to the bottom line so before any folloowing is added it matches to the top of the pipe so it doesnt look too miss matched.
     while(i < floor)
     {
-        Sleep(1 * 1000);// 1 second is equal to 1000 milliseconds and Sleep is calculated in milliseconds.
         printf("=");
         i++;
     }
@@ -520,6 +451,7 @@ int big_pipe() {
 
 
 int flag(){
+    printf("\n");
     printf("   =\n");
     printf("   =====\n");
     printf("   ========\n");
@@ -535,20 +467,17 @@ int flag(){
 };
 int main(void)
 {
-   // down_stairs();
-
-   // up_stairs();
-
-    stairs();
-
-   // full_pyrimid();
+    // stairs(); // one large function that asks all the questions then prints them out after 
     
+    down_stairs();
+    
+    up_stairs();
 
-   // big_pipe();
+    full_pyramid();
+    
+    big_pipe();
 
-    //flag();
+    flag(); // automatically prints a flag to mark the end
 
     return 0;
 };
-
-// still need to add floor for the other functions.
